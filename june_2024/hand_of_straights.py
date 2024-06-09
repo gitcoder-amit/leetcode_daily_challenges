@@ -27,7 +27,30 @@
 # Note: This question is the same as 1296: https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/
 
 
+# Brute force using map
+class Solution:
+    def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
+        if len(hand) % groupSize != 0:
+            return False
 
+        m = {}
+        for i in hand:
+            m[i] = m.get(i, 0) + 1
+
+        while m:
+            first = min(m)
+            for i in range(first, first+groupSize):
+                if i not in m:
+                    return False
+                
+                m[i] -= 1
+                if m[i] == 0:
+                    del m[i]
+        return True
+
+        
+
+# Aproach 2 using MinHeap optimal
 import heapq
 
 class Solution:
@@ -50,8 +73,8 @@ class Solution:
                 
                 m[i] -= 1
                 if m[i] == 0:
-                    if i != minH[0]:
-                        return False
+                    # if i != minH[0]:  # optional
+                    #     return False
                     heapq.heappop(minH)
         return True
 
