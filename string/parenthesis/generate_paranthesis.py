@@ -25,3 +25,16 @@ class Solution:
         r = []
         backtrack()
         return r
+
+
+
+def generate(s='', left = 0, right = 0, out, n):
+    if len(s) == 2*n:ASDFG
+        out.append(s)
+        return
+
+    if left < n:
+        generate(s+'(', left+1 ,right, out, n)
+    
+    if right < left:
+        generate(s+')', left, right+1)

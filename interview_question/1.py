@@ -33,6 +33,8 @@ def minimum_travel_cost(N, ticket_cost, start, finish):
     # Return the minimum of the two costs
     return min(clockwise_cost, anticlockwise_cost)
 
+
+
 # Example usage:
 N = 5
 ticket_cost = [1, 2, 4, 4, 5]
